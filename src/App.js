@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Router, useRouterHistory} from 'react-router';
+
 import './App.css';
+import AppRoutes from './AppRoutes';
+import {createHashHistory} from 'history';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = { open: false };
+    this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
+  }
+
+  handleDrawerToggle(){
+    this.setState({
+      open: !this.state.open
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to CodeLab Book</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router
+        history={useRouterHistory(createHashHistory)({queryKey: false})}
+        onUpdate={() => window.scrollTo(0, 0)}
+      >
+        {AppRoutes}
+      </Router>
     );
   }
 }

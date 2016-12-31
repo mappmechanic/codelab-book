@@ -1,0 +1,9 @@
+.bookMenu{
+	text-align: left;
+}
+
+.title{
+	font-size:20px;
+	cursor: pointer;
+	padding-left: 17px;
+}
