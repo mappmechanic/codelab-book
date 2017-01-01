@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AppBar } from 'material-ui';
+import Highlight from 'react-syntax-highlight';
 
 import logo from './Assets/logo.svg';
 
@@ -14,6 +15,7 @@ class Home extends Component {
 		        <p className="App-intro">
 		          To get started, edit <code>src/App.js</code> and save to reload.
 		        </p>
+		        <Highlight lang="bash" value={"$ npm install codelab-book"} />
 			</div>
 		);
 	}
