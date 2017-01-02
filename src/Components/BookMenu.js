@@ -18,27 +18,40 @@ const SelectableList = makeSelectable(List);
 
 class BookMenu extends Component{
 
-	static contextTypes = {
-	    router: PropTypes.object.isRequired,
-	};
-
-	static childContextTypes = {
-    	muiTheme: PropTypes.object,
-	};
-
-	state = {
-		open: true
+	handleTouchTapHeader() {
+		window.location.href = "/#/";
 	}
 
-	handleTouchTapHeader() {
-		window.location.href = "/";
+	getMenuComponents(MenuItems, currentPath){
+		const MenuComponents = MenuItems.map((menuItem) => {
+			const menuItemPath = `${currentPath}/${menuItem.path}`;
+			if(!menuItem.childPages || (menuItem.childPages && menuItem.childPages.length === 0)){
+				return (
+					<ListItem primaryText={menuItem.menuLabel} 
+					value={menuItemPath}
+					href={menuItemPath} />
+				)
+			}else if(menuItem.childPages.length > 0){
+				const nestedMenuItems = this.getMenuComponents(menuItem.childPages, menuItemPath);
+				return (
+					<ListItem
+		            primaryText={menuItem.menuLabel}
+		            primaryTogglesNestedList={true}
+		            href={menuItemPath}
+		            nestedItems={nestedMenuItems}
+		            />
+				)
+			}
+		});
+		return MenuComponents;
 	}
 
 	render(){
+		const MenuItems = this.props.menuItems.filter((menuItem) => !menuItem.isRedirect);
 		return (
 			<Drawer
 				className="bookMenu"
-				open={this.state.open}
+				open={this.props.opened}
 			>
 				<div className="title" style={styles.title} onTouchTap={this.handleTouchTapHeader}>
 		          Book Menu
@@ -46,52 +59,7 @@ class BookMenu extends Component{
 		     	<SelectableList
 		          value={location.pathname}
 		        >
-		          <ListItem
-		            primaryText="Introduction"
-		            primaryTogglesNestedList={true}
-		            nestedItems={[
-		              <ListItem primaryText="Overview" value="/components/avatar"
-		                href="#/introduction/overview" />,
-		              <ListItem primaryText="Installation" value="/get-started/installation" />,
-		              <ListItem primaryText="Usage" value="/get-started/usage" />,
-		              <ListItem primaryText="Server Rendering" value="/get-started/server-rendering" />,
-		              <ListItem primaryText="Examples" value="/get-started/examples" />,
-		            ]}
-		          />
-		          <ListItem
-		            primaryText="Customization"
-		            primaryTogglesNestedList={true}
-		            nestedItems={[
-		              <ListItem primaryText="Themes" value="/customization/themes" />,
-		              <ListItem primaryText="Styles" value="/customization/styles" />,
-		              <ListItem primaryText="Colors" value="/customization/colors" />,
-		            ]}
-		          />
-		          <ListItem
-		            primaryText="Components"
-		            primaryTogglesNestedList={true}
-		            nestedItems={[
-		              <ListItem
-		                primaryText="App Bar"
-		                value="/components/app-bar"
-		                href="#/components/app-bar"
-		              />,
-		              <ListItem
-		                primaryText="Auto Complete"
-		                value="/components/auto-complete"
-		                href="#/components/auto-complete"
-		              />,
-		              <ListItem
-		                primaryText="Avatar"
-		                value="/components/avatar"
-		                href="#/components/avatar"
-		              />,
-		              <ListItem
-		                primaryText="Badge"
-		                value="/components/badge"
-		                href="#/components/badge"
-		              />]} 
-		            />
+		          {this.getMenuComponents(MenuItems,'#')}
 		        </SelectableList>
 			</Drawer>
 		);

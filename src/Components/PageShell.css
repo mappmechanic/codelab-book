@@ -1,0 +1,4 @@
+.contentView{
+	-webkit-transition: all 0.2s ease-in-out; /* Safari */
+    transition: all 0.2s ease-in-out;
+}
