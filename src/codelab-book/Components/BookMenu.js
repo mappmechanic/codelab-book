@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Drawer } from "material-ui";
 import './BookMenu.css';
 import {List, ListItem, makeSelectable} from 'material-ui/List';
-import {spacing, typography, zIndex} from 'material-ui/styles';
+import {spacing, typography} from 'material-ui/styles';
 import {cyan500} from 'material-ui/styles/colors';
 
 const styles = {
@@ -17,17 +17,30 @@ const SelectableList = makeSelectable(List);
 
 
 class BookMenu extends Component{
+	static contextTypes = {
+    	router: PropTypes.object.isRequired,
+  	};
+
+	constructor(props){
+		super(props);
+		this.onChangeList = this.onChangeList.bind(this);
+	}
 
 	handleTouchTapHeader() {
 		window.location.href = "/#/";
 	}
 
+	onChangeList(event, newRoute){
+		const newPageTitle = newRoute !== '#/' ? event.target.innerText : null;
+		this.props.onItemClick(newPageTitle);		
+	}
+
 	getMenuComponents(MenuItems, currentPath){
-		const MenuComponents = MenuItems.map((menuItem) => {
+		const MenuComponents = MenuItems.map((menuItem, index) => {
 			const menuItemPath = `${currentPath}/${menuItem.path}`;
 			if(!menuItem.childPages || (menuItem.childPages && menuItem.childPages.length === 0)){
 				return (
-					<ListItem primaryText={menuItem.menuLabel} 
+					<ListItem key={index} primaryText={menuItem.menuLabel} 
 					value={menuItemPath}
 					href={menuItemPath} />
 				)
@@ -35,6 +48,7 @@ class BookMenu extends Component{
 				const nestedMenuItems = this.getMenuComponents(menuItem.childPages, menuItemPath);
 				return (
 					<ListItem
+					key={index}
 		            primaryText={menuItem.menuLabel}
 		            primaryTogglesNestedList={true}
 		            href={menuItemPath}
@@ -42,6 +56,7 @@ class BookMenu extends Component{
 		            />
 				)
 			}
+			return null;
 		});
 		return MenuComponents;
 	}
@@ -58,6 +73,7 @@ class BookMenu extends Component{
 		        </div>
 		     	<SelectableList
 		          value={location.pathname}
+		          onChange={this.onChangeList}
 		        >
 		          {this.getMenuComponents(MenuItems,'#')}
 		        </SelectableList>

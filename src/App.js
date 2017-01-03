@@ -1,31 +1,40 @@
 import React, { Component } from 'react';
-import {Router, useRouterHistory} from 'react-router';
-
 import './App.css';
-import AppRoutes from './AppRoutes';
-import {createHashHistory} from 'history';
+import CodeLabBook from './codelab-book';
+
+
+// Here we define all our material-ui ReactComponents.
+import Home from './example/Pages/Home';
+
+// Introduction Section View Components
+import Overview from './example/Pages/Introduction/Overview';
+
+const pagesJson = {
+  indexComponent: Home,
+  pagesList:[
+  {
+    isRedirect: true,
+    from: "introduction",
+    to: "/introduction/overview"
+  },
+  {
+    path: "introduction",
+    menuLabel: "Introduction",
+    childPages: [
+      {
+        path: "overview",
+        menuLabel: "Overview",
+        component: Overview
+      }
+    ]
+  } 
+]};
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = { open: false };
-    this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
-  }
-
-  handleDrawerToggle(){
-    this.setState({
-      open: !this.state.open
-    })
-  }
 
   render() {
     return (
-      <Router
-        history={useRouterHistory(createHashHistory)({queryKey: false})}
-        onUpdate={() => window.scrollTo(0, 0)}
-      >
-        {AppRoutes}
-      </Router>
+      <CodeLabBook pagesJson={pagesJson} />
     );
   }
 }
