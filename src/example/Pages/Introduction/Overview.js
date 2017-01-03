@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { AppBar } from 'material-ui';
 
 import ReactMarkdown from 'react-markdown';
 

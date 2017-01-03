@@ -1,22 +1,37 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { AppBar } from 'material-ui';
 
 import './PageShell.css';
 import BookMenu from './BookMenu';
 
+const defaultPageTitle = 'CodeLab Book';
+
 class PageShell extends Component {
+
+	static contextTypes = {
+		router: PropTypes.object.isRequired
+	};
+
 	constructor(props){
 		super(props);
 		this.openLeftMenu = this.openLeftMenu.bind(this);
+		this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
 	}
 
 	state = {
-		menuOpened: true
+		menuOpened: true,
+		openedPageTitle: this.props.bookTitle || defaultPageTitle,
 	}
 
 	openLeftMenu(){
 		this.setState({
 			menuOpened: !this.state.menuOpened
+		});
+	}
+
+	handleMenuItemClick(newPageTitle){
+		this.setState({
+			openedPageTitle: newPageTitle ? newPageTitle : defaultPageTitle
 		});
 	}
 
@@ -30,14 +45,18 @@ class PageShell extends Component {
 			}
 		}
 
+
 		const { children } = this.props;
 
 		return (
 			<div>
-				<BookMenu menuItems={this.props.route.menuItems} opened={this.state.menuOpened} />
+				<BookMenu 
+				menuItems={this.props.route.menuItems} 
+				opened={this.state.menuOpened}
+				onItemClick={this.handleMenuItemClick} />
 				<div className="contentView" style={styles.contentView}>
 					<AppBar
-					 title="CodeLab Book"
+					 title={this.state.openedPageTitle}
 					 onLeftIconButtonTouchTap={this.openLeftMenu}
 					/>
 					<div style={styles.pageView}>

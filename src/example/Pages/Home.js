@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { AppBar } from 'material-ui';
 import Highlight from 'react-syntax-highlight';
 
 import logo from './Assets/logo.svg';
