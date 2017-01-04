@@ -69,7 +69,7 @@ class BookMenu extends Component{
 				open={this.props.opened}
 			>
 				<div className="title" style={styles.title} onTouchTap={this.handleTouchTapHeader}>
-		          Book Menu
+		          {this.props.title || 'Book Menu'}
 		        </div>
 		     	<SelectableList
 		          value={location.pathname}

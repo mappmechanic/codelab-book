@@ -7,24 +7,37 @@ import CodeLabBook from './codelab-book';
 import Home from './example/Pages/Home';
 
 // Introduction Section View Components
-import Overview from './example/Pages/Introduction/Overview';
+import Features from './example/Pages/Introduction/Features';
+import Author from './example/Pages/Introduction/Author';
+import Contributors from './example/Pages/Introduction/Contributors';
 
 const pagesJson = {
+  menuTitle: 'Contents',
   indexComponent: Home,
   pagesList:[
   {
     isRedirect: true,
     from: "introduction",
-    to: "/introduction/overview"
+    to: "/introduction/features"
   },
   {
     path: "introduction",
     menuLabel: "Introduction",
     childPages: [
       {
-        path: "overview",
-        menuLabel: "Overview",
-        component: Overview
+        path: "features",
+        menuLabel: "Features",
+        component: Features
+      },
+      {
+        path: "author",
+        menuLabel: "Author",
+        component: Author
+      },
+      {
+        path: "contributors",
+        menuLabel: "Contributors",
+        component: Contributors
       }
     ]
   } 

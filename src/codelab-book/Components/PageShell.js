@@ -50,7 +50,8 @@ class PageShell extends Component {
 
 		return (
 			<div>
-				<BookMenu 
+				<BookMenu
+				title={this.props.route.menuTitle}
 				menuItems={this.props.route.menuItems} 
 				opened={this.state.menuOpened}
 				onItemClick={this.handleMenuItemClick} />
