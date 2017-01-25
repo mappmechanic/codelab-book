@@ -1,13 +1,15 @@
 {
   "name": "codelab-book",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
+  "author": "mappmechanic",
   "devDependencies": {
     "gh-pages": "^0.12.0",
     "react-scripts": "0.8.4"
   },
-  "main":"./src/codelab-book/index.js",
+  "main": "./build/static/js/main.8abe7fc8.js",
   "dependencies": {
+    "clean-webpack-plugin": "^0.1.15",
     "material-ui": "^0.16.6",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",

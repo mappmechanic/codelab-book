@@ -10,6 +10,8 @@ import Home from './example/Pages/Home';
 import Features from './example/Pages/Introduction/Features';
 import Author from './example/Pages/Introduction/Author';
 import Contributors from './example/Pages/Introduction/Contributors';
+import Setup from './example/Pages/SettingUp/Setup';
+import ImportCodelabBook from './example/Pages/SettingUp/ImportCodelabBook';
 
 const pagesJson = {
   menuTitle: 'Contents',
@@ -38,6 +40,22 @@ const pagesJson = {
         path: "contributors",
         menuLabel: "Contributors",
         component: Contributors
+      }
+    ]
+  },
+  {
+    path: "settingup",
+    menuLabel: "Setting Up",
+    childPages: [
+      {
+        path: "reactapp",
+        menuLabel: "Base App",
+        component: Setup
+      },
+      {
+        path: "import",
+        menuLabel: "Import Codelab Book",
+        component: ImportCodelabBook
       }
     ]
   } 

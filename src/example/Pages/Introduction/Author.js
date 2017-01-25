@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 class Author extends Component {
 	render() {
 
-	const markdown = `# About the Author
+	const markdown = `## About the Author
 <img src="https://media.licdn.com/media/p/2/000/28e/362/20cbc61.jpg" align="left" style="margin:0 10px 10px 0;" />
 
 Rahat is an IT Professional with expertise on Front End Technologies having a vast experience of developing 200+ websites, building numerous Enterprise Hybrid Mobile Apps, architecting User Interface Solutions, authoring a popular book on Ionic Framework and conducting 30+ Global Trainings on  latest frameworks and technology tools.

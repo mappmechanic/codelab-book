@@ -72,7 +72,7 @@ class Contributors extends Component {
 	render() {
 		return (
 			<div>
-				<h3>Contributors</h3>
+				<h2>Contributors</h2>
 				<div style={tableStyle}>
 					<div style={rowHeadStyle}>
 						<div style={colStyle}>

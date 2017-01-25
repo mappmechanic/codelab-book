@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 class Features extends Component {
 	render() {
 
-	const markdown = `# Features
+	const markdown = `## Features
 I want this repo to be useful to many Developers/Trainers, so just go through the existing set of features which you can use now or suggest new ones.
 
 Current Features:
