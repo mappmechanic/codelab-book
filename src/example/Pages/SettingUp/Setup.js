@@ -6,23 +6,44 @@ import ReactMarkdown from 'react-markdown';
 class Setup extends Component {
 	render() {
 	const lang1 = 'bash';
-	const markdown1 = `## Setup New Base App
-In this section of our tutorial, we will learn how to setup a new Codelab-Book. The codelab-book is available as a Node Module which can be imported into any normal React App or you can use Create-React-App to bootstrap a basic React App quickly.
-
-Thanks to **FacebookIncubator** for this amazing repository which abstracts the idiosyncrasies of React and provide us an easy way to create React Apps. In our **Codelab-Book**, we will leverage this repo to easily create new CodeLab Books, but keeping the core library separate as a Node Module for regular enhancements and upgrades.
+	const markdown1 = `## Install Typescript [ES6 Included]
+In order to try out ES6 or Typescript code we can install **typescript** npm module. As Typescript is a superset of ES6 so we can try out all the examples of ES6 in Typescript files itself.
 
 ### Step 1:
 Install NodeJS, if not present till now, then install the following npm packages globally:
 `;
-	const codeSnippet1 = `npm i -g create-react-app`;
+	const codeSnippet1 = `npm i -g typescript http-server`;
 
 	const markdown2 = `### Step 2:
-Now, we have to create a new React App. Go to any folder where you want to create a new project and then run the following commands:`;
-	const codeSnippet2 = `create-react-app app-name
-cd app-name`;
+Now, we have to create a new folder to hold all our Typescript example tutorials. Go to any folder where you want to create a new project and then run the following commands:`;
+	const codeSnippet2 = `mkdir AppName
+cd AppName`;
 	const markdown3 = `### Step 3:
-After the previous commands have been successfully executed, then run the following command to start the dev server and sample react app will open in default browser.`
-	const codeSnippet3 = `yarn start`;
+Now we create a sample Typescript file named **'welcome.ts'** with the below given contents:`
+	const codeSnippet3 = `function welcome(person: string) {
+    return "Welcome, " + person;
+}
+var user = "Rahat Khanna";
+welcome(user);
+`;
+	const markdown4 = `### Step 4:
+At this step we will compile this file by following command to generate the file **welcome.js**:`
+	const codeSnippet4 = `tsc welcome.ts`;
+	const markdown5 = `### Step5:
+After the JS file has been generated for our script, we can create a new **index.html** file to test this script. Please create the html file with following code:`;
+	const codeSnippet5 = `<!DOCTYPE html>
+<html>
+    <head><title>TypeScript Examples</title></head>
+    <body>
+        <script src="welcome.js"></script>
+    </body>
+</html>
+`;
+
+	const markdown6 = `### Step 6:
+Now, you can open index.html directly or using any web server like **http-server** with following command:`;
+	const codeSnippet6 = `http-server -p 3000`
+
 
 		return (
 			<div>
@@ -32,6 +53,12 @@ After the previous commands have been successfully executed, then run the follow
 				<Highlight lang={lang1} value={codeSnippet2} />
 				<ReactMarkdown source={markdown3} />
 				<Highlight lang={lang1} value={codeSnippet3} />
+				<ReactMarkdown source={markdown4} />
+				<Highlight lang={lang1} value={codeSnippet4} />
+				<ReactMarkdown source={markdown5} />
+				<Highlight lang='html' value={codeSnippet5} />
+				<ReactMarkdown source={markdown6} />
+				<Highlight lang={lang1} value={codeSnippet6} />
 			</div>
 		);
 	}

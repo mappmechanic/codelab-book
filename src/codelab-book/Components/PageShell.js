@@ -52,12 +52,13 @@ class PageShell extends Component {
 			<div>
 				<BookMenu
 				title={this.props.route.menuTitle}
-				menuItems={this.props.route.menuItems} 
+				menuItems={this.props.route.menuItems}
 				opened={this.state.menuOpened}
 				onItemClick={this.handleMenuItemClick} />
 				<div className="contentView" style={styles.contentView}>
 					<AppBar
 					 title={this.state.openedPageTitle}
+					 style={this.props.route.appBarStyle}
 					 onLeftIconButtonTouchTap={this.openLeftMenu}
 					/>
 					<div style={styles.pageView}>

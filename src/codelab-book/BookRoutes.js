@@ -30,7 +30,11 @@ const getPagesListRoutes = (pagesList) => {
 };
 
 const BookRoutes = (pagesJson) => (
-  <Route path="/" menuItems={pagesJson.pagesList} menuTitle={pagesJson.menuTitle} component={PageShell}>
+  <Route path="/"
+    menuItems={pagesJson.pagesList || []}
+    menuTitle={pagesJson.menuTitle || 'Contents'}
+    appBarStyle={pagesJson.appBarStyle || {}}
+    component={PageShell}>
     <IndexRoute component={pagesJson.indexComponent} />
     {getPagesListRoutes(pagesJson.pagesList)}
   </Route>

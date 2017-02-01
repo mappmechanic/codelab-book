@@ -1,32 +1,35 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import logo from './Assets/logo.png';
+import Banner from './Assets/es6-ts-banner.png';
 
 
 class Home extends Component {
 	render() {
 
-        const overviewText = `## Introduction 
-This is a special UI Project which can be used by Techology Enthusiasts &
-Trainers to create a small web/mobile app which can act as a Book for a Training Session/Workshop. This is right now biased towards a Tech Stack and uses ReactJS as a prerequisite for someone to use this.
+        const overviewText = `## Introduction
+This is a special place where you can get to learn ES6 and Typescript. This is hand-crafted Workshop Tutorials created by [MAppMechanic](http://twitter.com/mappmechanic). This tutorials are beneficial for any Web Developer who is starting to learn ES6 & Typescript for Angular2 or any other web framework to build robust web applications.
 
-Quick Link
-- [Features](/#/introduction/features)
+Quick Links
+- [PPTs for this Workshop]
+- [What is ES6 & Typescript ?](/#/introduction/features)
 - [Author](/#/introduction/author)
 - [Contributors](/#/introduction/contributors)
 
-For details topics like usage of Setting Up, Highlight, Markdown etc. follow the TOC given on the left.
+For details topics like usage of Setting Up, Tutorials, Code Snippets etc. follow the TOC given on the left.
 
-I would require help from other Contributors to this project, to make this more tech agnostic and let it be used by multiple people by just passing HTML pages to our app.`;
+I would require help from other Contributors to this project, to make it more elobarate and have nice examples.`;
 
 		return (
 			<div>
 				<div className="App-header">
-		          <img src={logo} className="App-logo" alt="logo" />
-		          <h2>Welcome to CodeLab Book</h2>
-		        </div>
-		        <ReactMarkdown source={overviewText}/>
+		          <img src={Banner} className="App-logo" alt="logo" />
+							<div>
+			          <h2>Ecmascript6 & Typescript</h2>
+								<h3> For Building Scalable Web Apps</h3>
+							</div>
+		    </div>
+		    <ReactMarkdown source={overviewText}/>
 			</div>
 		);
 	}

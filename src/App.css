@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #4C5B5C;
+  background-color: #222222;
   height: 80px;
   padding: 20px;
   color: white;
@@ -18,7 +18,15 @@
 
 .App-header h2 {
   display: inline-block;
-  margin-left: 10px
+  margin-top:12px;
+  margin-left: 10px;
+  margin-bottom:0px;
+}
+
+.App-header h3{
+  margin-top:4px;
+  margin-left:10px;
+  color:#eaeaea;
 }
 
 .App-intro {
