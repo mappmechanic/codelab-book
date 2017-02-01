@@ -27,12 +27,12 @@ class BookMenu extends Component{
 	}
 
 	handleTouchTapHeader() {
-		window.location.href = "/#/";
+		window.location.href = "#/";
 	}
 
 	onChangeList(event, newRoute){
 		const newPageTitle = newRoute !== '#/' ? event.target.innerText : null;
-		this.props.onItemClick(newPageTitle);		
+		this.props.onItemClick(newPageTitle);
 	}
 
 	getMenuComponents(MenuItems, currentPath){
@@ -40,7 +40,7 @@ class BookMenu extends Component{
 			const menuItemPath = `${currentPath}/${menuItem.path}`;
 			if(!menuItem.childPages || (menuItem.childPages && menuItem.childPages.length === 0)){
 				return (
-					<ListItem key={index} primaryText={menuItem.menuLabel} 
+					<ListItem key={index} primaryText={menuItem.menuLabel}
 					value={menuItemPath}
 					href={menuItemPath} />
 				)
@@ -49,6 +49,7 @@ class BookMenu extends Component{
 				return (
 					<ListItem
 					key={index}
+					initiallyOpen={true}
 		            primaryText={menuItem.menuLabel}
 		            primaryTogglesNestedList={true}
 		            href={menuItemPath}
