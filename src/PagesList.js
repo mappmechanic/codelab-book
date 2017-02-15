@@ -1,17 +1,19 @@
 // Here we define all our material-ui ReactComponents.
-import Home from './example/Pages/Home';
+import Home from './Pages/Home';
 
 // Introduction Section View Components
-import Presentation from './example/Pages/Introduction/Presentation';
-import About from './example/Pages/Introduction/About';
-import Contributors from './example/Pages/Introduction/Contributors';
-import Setup from './example/Pages/SettingUp/Setup';
-import DataTypes from './example/Pages/Typescript/DataTypes';
+import Presentation from './Pages/Introduction/Presentation';
+import About from './Pages/Introduction/About';
+import Contributors from './Pages/Introduction/Contributors';
+import Setup from './Pages/SettingUp/Setup';
+import NodeJS from './Pages/SettingUp/Node';
+import Base from './Pages/Starter/Base';
 
-import Angular from './example/Pages/Angular';
+import PolymerElements from './Pages/PolymerElements';
 
 const PagesList = {
-  menuTitle: 'Angular 2',
+  menuTitle: 'PolymerJS',
+  headerBackground:'#1565c0',
   indexComponent: Home,
   pagesList:[
   {
@@ -24,8 +26,8 @@ const PagesList = {
     menuLabel: "Introduction",
     childPages: [
       {
-        path: "ppt",
-        menuLabel: "Presentation",
+        path: "slides",
+        menuLabel: "Slides",
         component: Presentation
       },
       {
@@ -40,66 +42,76 @@ const PagesList = {
       }
     ]
   },
-  // {
-  //   path: "settingup",
-  //   menuLabel: "Install & Setup",
-  //   childPages: [
-  //     {
-  //       path: "npminstall",
-  //       menuLabel: "Install Typescript",
-  //       component: Setup
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: "typescript",
-  //   menuLabel: "Typescript Exercises",
-  //   childPages: [
-  //     {
-  //       path: "datatypes",
-  //       menuLabel: "DataTypes",
-  //       component: DataTypes
-  //     },
-  //     {
-  //       path: "functions",
-  //       menuLabel: "Functions",
-  //       component: DataTypes
-  //     },
-  //   ]
-  // },
   {
-    path: "angular",
-    menuLabel: "Angular 2 Exercises",
+    path: "settingup",
+    menuLabel: "Install & Setup",
     childPages: [
       {
-        path: "settingup",
-        menuLabel: "Setting Up",
-        component: Angular.SettingUp
+        path: "installnode",
+        menuLabel: "Install NodeJS & GIT",
+        component: NodeJS
       },
       {
-        path: "types",
-        menuLabel: "Basic Type Checking",
-        component: Angular.Types
+        path: "npminstall",
+        menuLabel: "Install Polymer-CLI",
+        component: Setup
+      }
+    ]
+  },
+  {
+    path: "starter",
+    menuLabel: "Starter App",
+    childPages: [
+      {
+        path: "base",
+        menuLabel: "App Template",
+        component: Base
+      },
+    ]
+  },
+  {
+    path: "elements",
+    menuLabel: "Polymer Elements",
+    childPages: [
+      {
+        path: "usingone",
+        menuLabel: "Using an Element",
+        component: PolymerElements.UsingElement
       },
       {
-        path: "component",
-        menuLabel: "New Component",
-        component: Angular.Component
+        path: "paper-elements",
+        menuLabel: "Paper Elements",
+        component: PolymerElements.PaperElements
       },
       {
-        path: "list",
-        menuLabel: "List & InBuilt Directives",
-        component: Angular.List
+        path: "iron-elements",
+        menuLabel: "Iron Elements",
+        component: PolymerElements.IronElements
       },
       {
-        path: "forms",
-        menuLabel: "Forms & Input Controls",
-        component: Angular.Forms
+        path: "layout-elements",
+        menuLabel: "Layout Elements",
+        component: PolymerElements.LayoutElements
       },
       {
-        path: "services",
-        menuLabel: "Services & API Integration",
-        component: Angular.Services
+        path: "google-components",
+        menuLabel: "Google Web Components",
+        component: PolymerElements.GoogleComponents
+      },
+      {
+        path: "gold-elements",
+        menuLabel: "Gold Elements",
+        component: PolymerElements.GoldElements
+      },
+      {
+        path: "app-elements",
+        menuLabel: "App Elements",
+        component: PolymerElements.AppElements
+      },
+      {
+        path: "custom-elements",
+        menuLabel: "Custom Elements",
+        component: PolymerElements.CustomElements
       },
     ]
   },

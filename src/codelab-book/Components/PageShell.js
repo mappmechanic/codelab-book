@@ -41,7 +41,7 @@ class PageShell extends Component {
 				paddingLeft:this.state.menuOpened ? 256 : 0,
 			},
 			pageView: {
-				margin:50
+				margin:30
 			}
 		}
 
@@ -52,13 +52,14 @@ class PageShell extends Component {
 			<div>
 				<BookMenu
 				title={this.props.route.menuTitle}
+				headerBackground={this.props.route.headerBackground}
 				menuItems={this.props.route.menuItems}
 				opened={this.state.menuOpened}
 				onItemClick={this.handleMenuItemClick} />
 				<div className="contentView" style={styles.contentView}>
 					<AppBar
 					 title={this.state.openedPageTitle}
-					 style={this.props.route.appBarStyle}
+					 style={{backgroundColor: this.props.route.headerBackground}}
 					 onLeftIconButtonTouchTap={this.openLeftMenu}
 					/>
 					<div style={styles.pageView}>

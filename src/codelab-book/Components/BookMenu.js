@@ -63,14 +63,19 @@ class BookMenu extends Component{
 	}
 
 	render(){
+		const { title, headerBackground } = this.props;
 		const MenuItems = this.props.menuItems.filter((menuItem) => !menuItem.isRedirect);
+		if(headerBackground){
+			styles.title.backgroundColor = headerBackground;
+		}
+		
 		return (
 			<Drawer
 				className="bookMenu"
 				open={this.props.opened}
 			>
 				<div className="title" style={styles.title} onTouchTap={this.handleTouchTapHeader}>
-		          {this.props.title || 'Book Menu'}
+		          {title || 'Book Menu'}
 		        </div>
 		     	<SelectableList
 		          value={location.pathname}

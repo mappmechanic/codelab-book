@@ -8,12 +8,13 @@
 }
 
 .App-header {
-  background-color: #222222;
+  background-color: #fff;
   height: 80px;
   padding: 20px;
-  color: white;
+  color: #000;
   display: flex;
   flex-direction: row;
+  box-shadow: -1px 2px 17px -2px rgba(0,0,0,0.75);
 }
 
 .App-header h2 {
@@ -26,7 +27,7 @@
 .App-header h3{
   margin-top:4px;
   margin-left:10px;
-  color:#eaeaea;
+  color:#e8345a;
 }
 
 .App-intro {
